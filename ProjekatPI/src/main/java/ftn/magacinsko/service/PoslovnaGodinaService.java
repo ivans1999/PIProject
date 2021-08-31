@@ -16,7 +16,7 @@ import ftn.magacinsko.serviceInterface.PoslovnaGodinaServiceInterface;
 
 @Service
 @Transactional(rollbackFor=Exception.class)
-public class PoslovnaGodinaInterface implements PoslovnaGodinaServiceInterface {
+public class PoslovnaGodinaService implements PoslovnaGodinaServiceInterface {
 
 	@Autowired
 	PoslovnaGodinaRepository poslovnaGodinaRepository;

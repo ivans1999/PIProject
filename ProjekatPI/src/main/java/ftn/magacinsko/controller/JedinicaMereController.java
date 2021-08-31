@@ -42,7 +42,7 @@ public class JedinicaMereController {
 	}
 	
 	@PutMapping(value = "/{id}", consumes = "application/json")
-	public ResponseEntity<Void> updatePreduzece(@RequestBody JedinicaMereDTO jedinicaMereDTO, @PathVariable("id") Integer id) throws ParseException{
+	public ResponseEntity<Void> updateJedMere(@RequestBody JedinicaMereDTO jedinicaMereDTO, @PathVariable("id") Integer id) throws ParseException{
 		try {
 			jedinicaMereServiceInterface.update(id,jedinicaMereDTO);
 			return  ResponseEntity.noContent().build();
