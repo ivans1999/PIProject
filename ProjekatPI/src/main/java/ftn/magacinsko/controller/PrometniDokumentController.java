@@ -43,7 +43,7 @@ public class PrometniDokumentController {
 	}
 	
 	@GetMapping(value = "/report/{redniBroj}")
-	public ResponseEntity getReport(@PathVariable("redniBroj") String redniBroj){
+	public ResponseEntity<PrometniDokumentDTO> getReport(@PathVariable("redniBroj") String redniBroj){
 		return dokumentService.report(redniBroj);
 	}
 }

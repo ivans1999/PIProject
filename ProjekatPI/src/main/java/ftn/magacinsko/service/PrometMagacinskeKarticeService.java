@@ -22,7 +22,7 @@ import ftn.magacinsko.serviceInterface.PrometMagacinskeKarticeServiceInterface;
 
 @Service
 @Transactional(rollbackFor=Exception.class)
-public class PrometMagacinskeKarticeInterface implements PrometMagacinskeKarticeServiceInterface {
+public class PrometMagacinskeKarticeService implements PrometMagacinskeKarticeServiceInterface {
 
 	@Autowired
 	PrometMagacinskeKarticeRepository prometMagacinskeKarticeRepository;

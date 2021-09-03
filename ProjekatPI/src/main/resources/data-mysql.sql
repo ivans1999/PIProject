@@ -46,5 +46,5 @@ INSERT INTO jedinica_mere(naziv,skraceni_naziv) VALUES ('Metar','m');
 --INSERT INTO prometni_dokument(datum, redni_broj, status, vrsta_dokumenta, sifra_magacina_izlaz, poslovna_godina, poslovni_partner, id_preduzeca, sifra_magacina_ulaz) 
 --VALUES('2021-03-18', '1-2021', 1, 0, NULL, 2, 1, 1, 1);
 --
---INSERT INTO stavka_dokumenta(,kolicina,cena,vrednost,prometni_dokument,roba_usluga)
+--INSERT INTO stavka_dokumenta(kolicina,cena,vrednost,prometni_dokument,roba_usluga)
 --VALUES(20, 200, 4000, 1, 4);
