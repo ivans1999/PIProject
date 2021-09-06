@@ -345,3 +345,4 @@ function promeniIzgledTaba(dropdown){
         prikaziPrometeMagacKartica.addClass("active");
     }
 }
+}

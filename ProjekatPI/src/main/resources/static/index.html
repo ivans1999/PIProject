@@ -34,7 +34,7 @@
     <script src="js/preduzece.js"></script>
     <script src="js/prometMagacinskihKartica.js"></script>
     <script src="js/magacinskeKartice.js"></script>
-	  <script src="js/jedinicaMere.js"></script>
+  	<script src="js/jedinicaMere.js"></script>
     <script src="js/poslovniPartner.js"></script>
     <script src="js/poslovnaGodina.js"></script>
   </head>
@@ -154,5 +154,50 @@
           </nav>
     </header>
     
+    
+    <!-- Prikaz preduzeca -->
+    <table  class="table" id="preduzecaTable" style="display: none;">
+          <thead>
+            <tr>
+              <th style="text-align: center;">Naziv</th>
+              <th style="text-align: center;">Adresa</th>
+              <th style="text-align: center;">Broj telefona</th>
+              <th style="text-align: center;">PIB</th>
+              <th style="text-align: center;">MIB</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tbodyPreduzece">
+
+          </tbody>
+        </table>
+    
+    <!--Dodavanje preduzeca  -->
+    <div id="dodajPreduzece" style="display: none;">
+          <div class="form-group">
+              <label for="naziv">Naziv:</label> <input type="text"
+                                                          class="form-control" id="naziv" placeholder="Unesite naziv preduzeća">
+                                                <input type="hidden" id = "idPreduzecaUpdate">
+          </div>
+          <div class="form-group">
+              <label for="adresa">Adresa:</label> <input type="text"
+                                                              class="form-control" id="adresa" placeholder="Unesite adresu preduzeća">
+          </div>
+          <div class="form-group">
+              <label for="brojTelefona">Broj telefona:</label> <input type="text"
+                                                          class="form-control" id="brojTelefona" placeholder="Unesite broj telefona preduzeća">
+          </div>
+          <div class="form-group">
+              <label for="pib">PIB:</label> <input type="text"
+                                                                 class="form-control" id="pib" placeholder="Unesite PIB preduzeća">
+          </div>
+          <div class="form-group">
+              <label for="mib">MIB:</label> <input type="text"
+                                                                 class="form-control" id="mib" placeholder="Unesite MIB preduzeća">
+          </div>
+          <button id="btnDodajPreduzece" onclick="submitPreduzece()" type="submit" class="btn btn-secondary">Dodaj</button>
+          <button id="updatePreduzece" type="submit" class="btn btn-warning" style="display: none;" onclick="submitUpdatePreduzece()">Izmeni</button>
+        </div>
 </body>
 </html>
