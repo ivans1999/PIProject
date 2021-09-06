@@ -266,4 +266,82 @@ function prikazi(){
         magacinskeKarticeTables.show();      
     	// magacinskeKarticeTablesP();
     }
+    
+    
+    
+function promeniIzgledTaba(dropdown){
+    var prometniDokumentDropdown = $("#prometniDokumentDropdown");
+    var robeUslugeDropdown = $("#robeUslugeDropdown");
+    var preduzeceDropdown = $("#preduzeceDropdown");
+    var magacinDropdown = $("#magacinDropdown");
+    var prikazMagKartDropdown = $("#prikazMagKartDropdown");
+    var prikazMagacinskeKartice = $("#prikazMagacinskihKarticaDropdown");
+
+    var prikazPartneraDropdown = $("#prikazPartneraDropdown");
+
+    var poslovnaGodinaDropdown = $("#poslovnaGodinaDropdown");
+    
+    var jedinicaMereDropdown = $("#jedinicaMereDropdown");
+
+    var prikaziMagacKartice = $("#prikaziMagacKartice");
+    var prikaziPrometeMagacKartica = $("#prikaziPrometeMagacKartica");
+    
+
+    prometniDokumentDropdown.removeClass("active");
+    preduzeceDropdown.removeClass("active");
+    robeUslugeDropdown.removeClass("active");
+    prikazMagKartDropdown.removeClass("active");
+    prikazMagacinskeKartice.removeClass("active");
+    magacinDropdown.removeClass("active");
+    jedinicaMereDropdown.removeClass("active");
+
+    prikazPartneraDropdown.removeClass("active");
+
+    poslovnaGodinaDropdown.removeClass("active");
+
+    prikaziMagacKartice.removeClass("active");
+    prikaziPrometeMagacKartica.removeClass("active");
+
+    if(dropdown === "prometniDokumentDropdown"){
+        //console.log("prometniDokumentDropdown")
+        prometniDokumentDropdown.addClass("active");
+    }
+    else if(dropdown === "robeUslugeDropdown"){
+        //console.log("robeUslugeDropdown")
+        robeUslugeDropdown.addClass("active");
+    }
+    else if(dropdown === "preduzeceDropdown"){
+        //console.log("preduzeceDropdown")
+        preduzeceDropdown.addClass("active");
+    }
+    else if(dropdown === "magacinDropdown"){
+        //console.log("magacinDropdown")
+        magacinDropdown.addClass("active");
+    }
+    else if(dropdown === "prikazMagKartDropdown"){
+        //console.log("prikazMagKartDropdown")
+        prikazMagKartDropdown.addClass("active");
+    }
+    else if(dropdown === "prikazMagacinskihKarticaDropdown"){
+        //console.log("prikazMagacinskihKarticaDropdown");
+        prikazMagacinskeKartice.addClass("active");
+
+    }else if(dropdown === "prikazPartneraDropdown"){
+        //console.log("prikazPartneraDropdown");
+        prikazPartneraDropdown.addClass("active");
+
+    }else if(dropdown === "poslovnaGodinaDropdown"){
+        //console.log("poslovnaGodinaDropdown")
+        poslovnaGodinaDropdown.addClass("active");
+
+    }else if(dropdown === "jedinicaMereDropdown"){
+        //console.log("jedinicaMereDropdown")
+        jedinicaMereDropdown.addClass("active");
+    }else if(dropdown === "prikaziMagacKartice"){
+        //console.log("prikaziMagacKartice")
+        prikaziMagacKartice.addClass("active");
+    }else if(dropdown === "prikaziPrometeMagacKartica"){
+        //console.log("prikaziPrometeMagacKartica")
+        prikaziPrometeMagacKartica.addClass("active");
+    }
 }

@@ -2,107 +2,153 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" 
-	integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" 
-	integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" 
-	integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
     <title>Magacinsko poslovanje</title>
+    <!-- Ukljucivanje JQuery biblioteke -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <!-- Ukljucivanje Bootstrap-a za izgled aplikacije -->
+    <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
-    	
+      
+    
+
+    <!-- Ukljucivanje js fajlova -->
     <script src="js/app.js"></script>
-</head>
+    <script src="js/magacin.js"></script>
+    <script src="js/prometniDokument.js"></script>
+    <script src="js/robeIliUsluge.js"></script>
+    <script src="js/preduzece.js"></script>
+    <script src="js/prometMagacinskihKartica.js"></script>
+    <script src="js/magacinskeKartice.js"></script>
+	  <script src="js/jedinicaMere.js"></script>
+    <script src="js/poslovniPartner.js"></script>
+    <script src="js/poslovnaGodina.js"></script>
+  </head>
+
 <body>
-	<header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
-                <li id="prometniDokumentDropdown" class="nav-item dropdown" >
+                <li id="prometniDokumentDropdown" class="nav-item dropdown" onclick="promeniIzgledTaba('prometniDokumentDropdown')">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Prometni dokument
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <button class="dropdown-item" >Prijemnica</button>
-                      <button class="dropdown-item" >Otpremnica</button>
-                      <button class="dropdown-item" >Međumagacinski promet</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('prijemnica')">Prijemnica</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('otpremnica')">Otpremnica</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('medjumagacinskiPromet')">Međumagacinski promet</button>
                     </div>
                   </li>
-                  <li class="nav-item dropdown" id="robeUslugeDropdown" >
+                  <li class="nav-item dropdown" id="robeUslugeDropdown" onclick="promeniIzgledTaba('robeUslugeDropdown')">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Robe/Ulsuge
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <button class="dropdown-item" >Sve robe/usluge</button>
-                      <button class="dropdown-item" >Dodavanje robe/usluge</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('sveRobeUsluge')">Sve robe/usluge</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('dodavanjeRobeUsluge')">Dodavanje robe/usluge</button>
                     </div>
                   </li>
                   
-                  <li class="nav-item dropdown" id="jedinicaMereDropdown" >
+                  <li class="nav-item dropdown" id="jedinicaMereDropdown" onclick="promeniIzgledTaba('jedinicaMereDropdown')">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Jedinice mere
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <button class="dropdown-item" >Sve jedinice mere</button>
-                      <button class="dropdown-item" >Dodaj jedinicu mere</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('sveJediniceMere')">Sve jedinice mere</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('dodajJedinicuMere')">Dodaj jedinicu mere</button>
                     </div>
                   </li>
                   
-                  <li class="nav-item dropdown" id="preduzeceDropdown">
+                  <li class="nav-item dropdown" id="preduzeceDropdown" onclick="promeniIzgledTaba('preduzeceDropdown')">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Preduzeće
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <button class="dropdown-item" ">Sva preduzeća</button>
-                      <button class="dropdown-item" ">Dodaj preduzeće</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('svaPreduzeca')">Sva preduzeća</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('dodajPreduzece')">Dodaj preduzeće</button>
                     </div>
                   </li>
                   
-                 <li class="nav-item dropdown" id="magacinDropdown" ">
+                 <li class="nav-item dropdown" id="magacinDropdown" onclick="promeniIzgledTaba('magacinDropdown')">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Magacin
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <button class="dropdown-item" >Svi magacini</button>
-                      <button class="dropdown-item" >Dodaj magacin</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('sviMagacini')">Svi magacini</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('dodajMagacin')">Dodaj magacin</button>
                     </div>
                   </li>
 
-                  
-                  <li id="prikazMagacinskihKarticaDropdown" class="nav-item dropdown" ">
+                  <!-- <li id="prikazMagKartDropdown" class="nav-item dropdown" onclick="promeniIzgledTaba('prikazMagKartDropdown')">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Promet magacinske kartice
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <button class="dropdown-item" onclick="odrediPrikaz('sviPrometiMagKart')">Svi prometi magacinskih kartica</button>
+                    </div>
+                  </li> -->
+                  <li id="prikazMagacinskihKarticaDropdown" class="nav-item dropdown" onclick="promeniIzgledTaba('prikazMagacinskihKarticaDropdown')">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Magacinske kartice
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <button class="dropdown-item" ">Sve magacinske kartice</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('sveMagacinskeKartice')">Sve magacinske kartice</button>
                     </div>
                   </li>
 
-                  <li id="prikazPartneraDropdown" class="nav-item dropdown" ">
+                  <li id="prikazPartneraDropdown" class="nav-item dropdown" onclick="promeniIzgledTaba('prikazPartneraDropdown')">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Poslovni partneri
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <button class="dropdown-item" >Svi poslovni partneri</button>
-                      <button class="dropdown-item" >Dodaj poslovnog partnera</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('sviPartneri')">Svi poslovni partneri</button>
+                      <button class="dropdown-item" onclick="odrediPrikaz('dodajPartnera')">Dodaj poslovnog partnera</button>
 
 
-                  <li class="nav-item dropdown" id="poslovnaGodinaDropdown" ">
+                  <li class="nav-item dropdown" id="poslovnaGodinaDropdown" onclick="promeniIzgledTaba('poslovnaGodinaDropdown')">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Poslovna godina
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <button class="dropdown-item" >Sve poslovne godine</button>
-                      <!-- <button class="dropdown-item" ">Dodaj poslovnu godinu</button> -->
+                      <button class="dropdown-item" onclick="odrediPrikaz('svePoslovneGodine')">Sve poslovne godine</button>
+                      <!-- <button class="dropdown-item" onclick="odrediPrikaz('dodajPoslovnuGodinu')">Dodaj poslovnu godinu</button> -->
 
                     </div>
                   </li>
 
-                  
+                  <!-- <li class="nav-item dropdown" id="prikaziMagacKartice" onclick="promeniIzgledTaba('prikaziMagacKartice')">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Magacinske kartice
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <button class="dropdown-item" onclick="odrediPrikaz('prikaziOvuKarticu')">Magacinska kartica</button>
+                    </div>
+                  </li> -->
+
+                  <!-- <li class="nav-item dropdown" id="prikaziPrometeMagacKartica" onclick="promeniIzgledTaba('prikaziPrometeMagacKartica')">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Promet magacinske kartice
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <button class="dropdown-item" onclick="odrediPrikaz('prikazPromMagaKart')">Promet magacinske kartice</button>
+                    </div>
+                  </li> -->
               </div>
             </div>
           </nav>
