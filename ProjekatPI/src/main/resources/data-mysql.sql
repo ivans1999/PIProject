@@ -1,7 +1,7 @@
 --INSERT INTO PREDUZECE(naziv_preduzeca, adresa, telefon, PIB, MIB) VALUES('Agro promet', 'Ulica Vojvode Stepe 11000 Beograd', '0644224513', 1234, 54321);
 --INSERT INTO PREDUZECE(naziv_preduzeca, adresa, telefon, PIB, MIB) VALUES('Agro oprema', 'Kneza Mihaila bb 21000 Novi Sad', '065111738', 9876, 56789);
---
---
+
+
 INSERT INTO jedinica_mere(naziv,skraceni_naziv) VALUES ('Metar','m');
 --INSERT INTO jedinica_mere(naziv,skraceni_naziv) VALUES ('Kilogram','kg');
 --INSERT INTO jedinica_mere(naziv,skraceni_naziv) VALUES ('Metar kubni','m3');

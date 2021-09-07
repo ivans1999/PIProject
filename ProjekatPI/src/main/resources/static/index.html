@@ -200,5 +200,39 @@
           <button id="btnDodajPreduzece" onclick="submitPreduzece()" type="submit" class="btn btn-secondary">Dodaj</button>
           <button id="updatePreduzece" type="submit" class="btn btn-warning" style="display: none;" onclick="submitUpdatePreduzece()">Izmeni</button>
         </div>
+        
+      <!-- Prikaz svih magacina -->
+        <table class="table" id="magaciniTable" style="display: none;">
+          <thead>
+            <tr>
+              <th style="text-align: center;">Sifra</th>
+              <th style="text-align: center;">Naziv magacina</th>
+              <th style="text-align: center;">Naziv preduzeca</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tbodyMagacin">
+
+          </tbody>
+        </table>
+        
+       <!-- Forma za dodavanje magacina -->
+        <div id="dodajMagacin" style="display: none;">
+          <div class="form-group">
+              <label for="naziv">Naziv:</label> <input type="text"
+                                                          class="form-control col-sm-5" id="nazivMagacina" placeholder="Unesite naziv magacina">
+                                                <input type="hidden" id="idMagacinUpdate">
+          </div>
+          
+        <div id="selectPreduzeceMagacin" class="form-group">
+          <label>Izaberite preduzece:
+            <select class="form-control" id="preduzece">
+            </select>
+          </label>
+        </div>
+
+          <button id="btnDodajMagacin" onclick="submitMagacin()" type="submit" class="btn btn-secondary">Dodaj</button>
+          <button id="izmeniMagacin" type="submit" class="btn btn-warning" style="display: none;" onclick="submitUpdateMagacin()">Izmeni</button>
+      </div>
 </body>
 </html>
