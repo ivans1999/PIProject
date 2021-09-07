@@ -74,19 +74,6 @@ function submitMagacin(){
     }
 }
 
-/*function selectPreduzecaMagacin(preduzeca){
-    var selectPreduzeceMagacin = $("#selectPreduzeceMagacin");
-    selectPreduzeceMagacin.empty();
-    var html = '<label>Izaberite preduzeceeee:';
-    html += '<select class="form-control" id="preduzece">';
-    preduzeca.forEach(preduzece => {
-        html += '<option value="' + preduzece.id + '">' + preduzece.naziv + '</option>'
-    });
-    html += '</select>';
-    html += '</label>';
-    selectPreduzeceMagacin.append(html);
-}*/
-
 function editMagacin(id){
     $('#btnDodajMagacin').show();
     $("#magaciniTable").hide();
