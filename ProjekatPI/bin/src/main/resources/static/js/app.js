@@ -102,7 +102,6 @@ function odrediPrikaz(id){
     }
     prikazi();
 }
-
 function prikazi(){
     redovi.forEach(element => {
         console.log("red"+element.id);
@@ -268,7 +267,7 @@ function prikazi(){
     	// magacinskeKarticeTablesP();
     }
     
-}
+    
     
 function promeniIzgledTaba(dropdown){
     var prometniDokumentDropdown = $("#prometniDokumentDropdown");
@@ -346,4 +345,4 @@ function promeniIzgledTaba(dropdown){
         prikaziPrometeMagacKartica.addClass("active");
     }
 }
-
+}
