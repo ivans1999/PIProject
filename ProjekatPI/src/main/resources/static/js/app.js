@@ -346,4 +346,93 @@ function promeniIzgledTaba(dropdown){
         prikaziPrometeMagacKartica.addClass("active");
     }
 }
+function dajPreduzeca(text,id){
+    
+    $.ajax({
+        type: "GET",
+        contentType : 'application/json; charset=utf-8',
+        url : "http://localhost:8080/api/preduzece",
+        success : function(result){
+            if(text === "selectPreduzeca"){
+                selectPreduzece(result);
+            }else if(id != undefined){
+                selectPreduzecaUpdate(result,id)
+            }
+            else {
+            	preduzeca = result;
+            }
+        }
+    });
+}
+
+function selectPreduzecaUpdate(result,id){
+
+    var glavnoPreduzece = "";
+    var ostalaPreduzeca = "";
+    var selectJedinicaMere = $("#preduzece");
+    selectJedinicaMere.empty();
+    var html = '';
+    result.forEach(preduzece => {
+        if(id == preduzece.id){
+            glavnoPreduzece = '<option value="' + preduzece.id + '">' + preduzece.naziv + '</option>';
+        }else{
+            ostalaPreduzeca += '<option value="' + preduzece.id + '">' + preduzece.naziv + '</option>';
+        }
+    });
+    html += glavnoPreduzece;
+    html += ostalaPreduzeca;
+    selectJedinicaMere.append(html);
+}
+
+function selectPreduzece(list){
+    preduzeca=list;
+    var inputMagacinPreduzece = $('#inputMagacinPreduzece');
+    var inputKupac = $('#inputKupac');
+    var inputProdavac = $('#inputProdavac');
+    var preduzece = $('#preduzece');
+
+    var preduzecePP = $('#preduzecePP');
+
+    var preduzecePoslovnaGodina = $("#preduzecePoslovnaGodina");
+
+
+    var html = "";
+    list.forEach(preduzece => {
+        html += '<option value="' + preduzece.id + '">' + preduzece.naziv + '</option>';
+    });
+
+    //Pravljenje liste kupaca
+    inputKupac.empty();
+    inputKupac.append(html);
+
+    //Pravljenje liste prodavaca
+    inputProdavac.empty();
+    inputProdavac.append(html);
+
+    //Pravljenje liste preduzeca za odabir magacina
+    inputMagacinPreduzece.empty();
+    inputMagacinPreduzece.append(html);
+
+    //Pravljenje liste preduzeca za kreiranje poslovnog partnera
+    preduzecePP.empty();
+    preduzecePP.append(html);
+
+    //Pravljenje liste preduzeca za kreiranje magacina
+    preduzece.empty();
+    preduzece.append(html);
+
+    //Pravljenje liste preduzeca za poslovnu godinu
+    preduzecePoslovnaGodina.empty();
+    preduzecePoslovnaGodina.append(html);
+
+    $('#inputKupacMestoIAdresa').val(list[0].adresa);
+    $('#inputKupacPIB').val(list[0].pIB);
+    $('#inputKupacTekuciRacun').val(list[0].mIB);
+
+    $('#inputProdavacMestoIAdresa').val(list[0].adresa);
+    $('#inputProdavacPIB').val(list[0].pIB);
+    $('#inputProdavacTekuciRacun').val(list[0].mIB);
+
+    promenaPreduzeca();
+}
 
