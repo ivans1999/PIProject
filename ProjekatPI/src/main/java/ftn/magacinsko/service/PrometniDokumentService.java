@@ -163,7 +163,7 @@ public class PrometniDokumentService implements PrometniDokumentServiceInterface
 
 	@Override
 	public ResponseEntity report(String redniBroj) {
-		String connectionUrl = "jdbc:mysql://localhost/magacinsko";
+		String connectionUrl = "jdbc:mysql://localhost:3306/magacinsko";
 		
 		JasperPrint jp;
 		ByteArrayInputStream bis;

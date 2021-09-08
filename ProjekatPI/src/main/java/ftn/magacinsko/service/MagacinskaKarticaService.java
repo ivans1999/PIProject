@@ -330,7 +330,7 @@ public class MagacinskaKarticaService implements MagacinskaKarticaServiceInterfa
 
 	@Override
 	public ResponseEntity report(String idMagacinskeKartice) {
-		String connectionUrl = "jdbc:mysql://localhost/magacinsko";
+		String connectionUrl = "jdbc:mysql://localhost:3306/magacinsko";
 		
 		JasperPrint jp;
 		ByteArrayInputStream bis;
