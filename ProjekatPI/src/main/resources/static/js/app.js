@@ -103,12 +103,12 @@ function odrediPrikaz(id){
     prikazi();
 }
 
+redovi = [];
 function prikazi(){
     redovi.forEach(element => {
         console.log("red"+element.id);
         $("#red"+element.id).remove();
     });
-    redovi = [];
     var prometniDokment = $("#prometniDokment");
     var prijemnica = $("#prijemnica");
     var otpremnica = $("#otpremnica");
