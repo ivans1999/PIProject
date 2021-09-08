@@ -93,7 +93,21 @@ function editRobeIliUsluge(id){
 
     prikaziRobuIliUslugu();
 }
+function selectRobaIliUsluga(list){
+    console.log("selectRobe")
+    roba=list;
+   
+    var inputRobaForMagKart = $("#inputRobaForMagKart");
+    var html = "";
+    html += '<option value="0"></option>';
+    list.forEach(roba => {
+        html += '<option value="' + roba.sifra + '">' + roba.naziv + '</option>';
+    });
 
+    inputRobaForMagKart.empty();
+    inputRobaForMagKart.append(html);
+
+}
 function submitUpdateRobaIliUsluga(){
     var id = $("#idRobeIliUslugeUpdate").val();
     var naziv = $("#nazivInputRobaUsluga").val();
@@ -120,6 +134,27 @@ function submitUpdateRobaIliUsluga(){
             console.log("ERROR: ", e);
         }
     });
+}
+function prikaziRobeIliUsluge(list){
+    var tbodyRobaUsluga = $('#tbodyRobaUsluga');
+    var html='';
+    tbodyRobaUsluga.empty();
+    list.forEach(ru => {
+        html += '<tr>';
+        html +=     '<td align="center">'+ru.sifra+'</td>';
+        html +=     '<td align="center">';
+        // html +=         '<a href="" id="prikaziJedno" result-prID="'+ru.sifra+'">';
+        html +=             ru.naziv;
+        // html +=         '</a>';
+        html +=     '</td>';
+        html +=     '<td align="center">'+ru.jedinicaMere+'</td>';
+        html +=     '<td align="center">';
+	    html +=         '<button type="submit" class="btn btn-warning" style="margin-right: 5%;" onclick="editRobeIliUsluge('+ru.sifra+')">IZMENI</button>';
+	    html +=         '<button type="submit" class="btn btn-danger" onclick="deleteRobaIliUsluga('+ru.sifra+')">OBRIŠI</button>';
+        html +=      '</td>';
+        html +=   '</tr>';
+    });
+    tbodyRobaUsluga.append(html);
 }
 function deleteRobaIliUsluga(id){
     $.ajax({
