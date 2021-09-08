@@ -56,3 +56,46 @@ function prikazSvihPrometaMagKartica() {
 
     console.log('prikazan promet mag kartica');
 }
+
+function formatDate(date) {
+    var day = date.getDate();
+    var monthIndex = date.getMonth();
+    var year = date.getFullYear();
+    
+    var months = ["Januar", "Februar", "Mart", "April", "Maj", "Jun", "Jul", "Avgust", "Septembar", "Oktobar", "Novembar", "Decembar"];
+    
+    return year + "-" + months[monthIndex] + "-" + day;
+
+}
+
+
+
+function prikazPromMagacinskeKarticeTables(){
+
+    console.log('evo me sad u funkciji u prometMagacinskihKartica');
+    var prikazPrometaM = $("#prikazPromMagaKartice");
+
+    prikazPrometaM.show();
+}
+
+function storniranje(redniBroj){
+
+    $.ajax({
+        type: "GET",
+        contentType : 'application/json; charset=utf-8',
+        url : 'http://localhost:8080/api/promet-magacinske-kartice/storniraj/'+redniBroj,
+        success : function(result){
+            alert('stornirano');
+            prikazSvihPrometaMagKartica();
+        },
+        error :function(e){
+            alert('ne valja nesto kod storniranja');
+        }
+    });
+}
+
+function prometMagKarticaIzvestaj(){
+    var idMk = $("#idMagacinskeKartice").val();
+    window.open('http://localhost:8080/api/magacinska-kartica/report/'+idMk);
+    location.reload();
+}

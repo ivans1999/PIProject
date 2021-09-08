@@ -169,4 +169,20 @@ function dajPoslGod(text){
             console.log("Greska!!!");
         }
     });
+    
+function selectPoslGod(list){
+    console.log("selectPoslGod")
+    posG=list;
+   
+    var inputGodinaForMagKart = $("#inputGodinaForMagKart");
+    var html = "";
+    html += '<option value="0"></option>';
+    list.forEach(posG => {
+        html += '<option value="' + posG.brojGodine + '">' + posG.brojGodine + '</option>';
+    });
+
+    inputGodinaForMagKart.empty();
+    inputGodinaForMagKart.append(html);
+
+}
 }

@@ -58,6 +58,69 @@ function submitRobaUsluga(){
         });
     }
 }
+function editRobeIliUsluge(id){
+    $('#dodavanjeRobeUsluge').show();
+    $("#robeUslugeTable").hide();
+    $("#dodavanjeRobeUsluge").show();
+    $('#izmeniRobuIliUslugu').show();
+    $("#dodajRobuIliUslugu").hide();
+    
+    function prikaziRobuIliUslugu(){
+        $.ajax({
+            url:'http://localhost:8080/api/roba-ili-usluga/jedna-roba-ili-usluga/' + id,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+
+            success: function(result){
+            	dajPreduzeca("selectPreduzeca");
+                dajJediniceMere(result.idJedinicaMere);
+                var nazivR = $("#nazivInputRobaUsluga");
+                var jedinicaMereR = $("#inputJedinicaMere");
+                var idRobeUpdate = $('#idRobeIliUslugeUpdate');
+
+                idRobeUpdate.val(result.sifra);
+                nazivR.val(result.naziv);
+                // jedinicaMereR.val(result.idJedinicaMere);
+
+                },
+            error : function(e){
+                alert('Doslo je do neke greške!')
+                console.log("ERROR: ", e);
+            }
+
+        });
+    }
+
+    prikaziRobuIliUslugu();
+}
+
+function submitUpdateRobaIliUsluga(){
+    var id = $("#idRobeIliUslugeUpdate").val();
+    var naziv = $("#nazivInputRobaUsluga").val();
+    var jedMerR = $("#inputJedinicaMere").val();
+
+    var formData = {
+        "naziv": naziv,
+        "idJedinicaMere": jedMerR
+    }
+
+    console.log(JSON.stringify(formData));
+
+    $.ajax({
+        url:'http://localhost:8080/api/roba-ili-usluga/' + id,
+        type: 'PUT',
+        contentType: 'application/json; charset=utf-8',
+        data : JSON.stringify(formData),
+        success: function(result){
+            alert('Roba ili usluga je uspesno izmenjena!');
+            odrediPrikaz('sveRobeUsluge');
+        },
+        error : function(e){
+            alert('Doslo je do neke greške!')
+            console.log("ERROR: ", e);
+        }
+    });
+}
 function deleteRobaIliUsluga(id){
     $.ajax({
         url:'http://localhost:8080/api/roba-ili-usluga/' + id,
