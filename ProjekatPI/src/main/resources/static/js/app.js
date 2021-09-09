@@ -103,6 +103,7 @@ function odrediPrikaz(id){
     prikazi();
 }
 
+redovi = [];
 function prikazi(){
 	redovi = [];
     redovi.forEach(element => {

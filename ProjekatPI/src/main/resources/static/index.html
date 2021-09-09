@@ -326,6 +326,23 @@
 
         </tbody>
       </table>
+      
+       <!-- Forma za dodavanje jedinice mere -->
+        <div id="dodajJedinicuMere" style="display: none;">
+          <div class="form-group">
+              <label for="naziv">Naziv:</label> <input type="text"
+                                                          class="form-control" id="nazivJediniceMere" placeholder="Unesite naziv jedinice mere">
+                                                <input type="hidden" id = "idJediniceMereUpdate">
+          </div>
+          <div class="form-group">
+              <label for="adresa">Skraceni naziv:</label> <input type="text"
+                                                              class="form-control" id="skraceniNaziv" placeholder="Unesite skraceni naziv jedinice mere">
+          </div>
+
+          <button id="btnDodajJedinicuMere" onclick="submitJedinicaMere()" type="submit" class="btn btn-secondary">Dodaj</button>
+		      <button id="izmeniJedinicuMere" type="submit" class="btn btn-warning" style="display: none;" onclick="submitUpdateJedinicaMere()">Izmeni</button>
+        </div>
+        
         
 </body>
 </html>
