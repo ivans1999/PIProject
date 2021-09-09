@@ -104,11 +104,11 @@ function odrediPrikaz(id){
 }
 
 function prikazi(){
+	redovi = [];
     redovi.forEach(element => {
         console.log("red"+element.id);
         $("#red"+element.id).remove();
     });
-    redovi = [];
     var prometniDokment = $("#prometniDokment");
     var prijemnica = $("#prijemnica");
     var otpremnica = $("#otpremnica");
