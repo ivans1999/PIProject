@@ -366,3 +366,58 @@ function formatirajBroj(){
     });
 }
 
+//     var greskaCena = false;
+            //     var greskaKolicina = false;
+            //     var stavke = [];
+            //     var greska2=""
+            //     console.log("Redovi: "+JSON.stringify(redovi));
+            //    // var i =0;
+            //     redovi.forEach(red => {
+            //         //console.log(JSON.stringify(red))
+            //         // i++
+            //         // console.log("I: "+i)
+            //         if($('#'+red.cena).val()==="" || $('#'+red.cena).val()==0){
+            //             greskaCena = true;
+            //             greska2 += "\nMorate uneti cenu za robu ili uslugu!";
+            //         }
+            //         if($('#'+red.kolicina).val()==="" || $('#'+red.kolicina).val()==0){
+            //             greskaKolicina = true;
+            //             greska2 += "\nMorate uneti kolicinu za robu ili uslugu!";
+            //         }
+            //         if(!greskaCena && !greskaKolicina){
+            //             var stavka = {
+            //                 'kolicina':$('#'+red.kolicina).val(),
+            //                 'cena':$('#'+red.cena).val(),
+            //                 'vrednost':$('#'+red.vrednost).val(),
+            //                 'prometniDokument':result.id,
+            //                 'robaUsluga':$('#'+red.naziv).val()
+            //             }
+            //             stavke.push(stavka)
+            //         }
+            //     });
+            //     if(greskaCena || greskaKolicina){
+            //         alert(greska2);
+            //     }
+            //     else{
+            //         console.log(JSON.stringify(stavke));
+            //         $.ajax({
+            //             url : 'http://localhost:8080/api/stavka-dokumenta',
+            //             type : "POST",
+            //             contentType: 'application/json; charset=utf-8',
+            //             data : JSON.stringify(stavke),
+            //             success: function(result){
+            //                 alert('Prometni dokument i stavke dokumenta su uspesno proknjižene');
+            //                 redovi=[];
+            //                 if(prikaziOtpremnicu){
+            //                     $('#btnProknjizi').hide();
+            //                     $('#btnIzvestaj').show();
+            //                 }
+            //                 else{
+            //                     location.reload();
+            //                 }
+            //             },
+            //             error : function(e){
+            //                 alert(JSON.stringify(e.responseJSON.message));
+            //             }
+            //         });
+            //     }

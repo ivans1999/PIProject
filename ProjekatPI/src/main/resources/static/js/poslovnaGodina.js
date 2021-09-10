@@ -169,7 +169,8 @@ function dajPoslGod(text){
             console.log("Greska!!!");
         }
     });
-    
+}
+
 function selectPoslGod(list){
     console.log("selectPoslGod")
     posG=list;
@@ -184,5 +185,4 @@ function selectPoslGod(list){
     inputGodinaForMagKart.empty();
     inputGodinaForMagKart.append(html);
 
-}
 }

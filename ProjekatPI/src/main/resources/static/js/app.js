@@ -103,13 +103,12 @@ function odrediPrikaz(id){
     prikazi();
 }
 
-redovi = [];
 function prikazi(){
-	redovi = [];
     redovi.forEach(element => {
         console.log("red"+element.id);
         $("#red"+element.id).remove();
     });
+    redovi = [];
     var prometniDokment = $("#prometniDokment");
     var prijemnica = $("#prijemnica");
     var otpremnica = $("#otpremnica");
@@ -268,9 +267,8 @@ function prikazi(){
         magacinskeKarticeTables.show();      
     	// magacinskeKarticeTablesP();
     }
-    
 }
-    
+
 function promeniIzgledTaba(dropdown){
     var prometniDokumentDropdown = $("#prometniDokumentDropdown");
     var robeUslugeDropdown = $("#robeUslugeDropdown");
@@ -347,6 +345,7 @@ function promeniIzgledTaba(dropdown){
         prikaziPrometeMagacKartica.addClass("active");
     }
 }
+
 function dajPreduzeca(text,id){
     
     $.ajax({
@@ -436,4 +435,3 @@ function selectPreduzece(list){
 
     promenaPreduzeca();
 }
-

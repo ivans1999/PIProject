@@ -54,7 +54,7 @@ function prikazSvihPrometaMagKartica() {
 
     $('#btnIzvestajPrometa').show();
 
-    console.log('prikazan promet mag kartica');
+    console.log('aaaaa');
 }
 
 function formatDate(date) {

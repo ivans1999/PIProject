@@ -1,12 +1,12 @@
 function prikazSvihJedinicaMere() {
-	
-	var tabelaJedinicaMere = $("#jedinicaMereTable");
-	var tbodyJedinicaMere = $("#tbodyJedinicaMere");
-	
-	function prikaziJediniceMere() {
-		$.ajax({
-			type: "GET",
-			contentType: 'application/json; charset=utf-8',
+
+    var tabelaJedinicaMere = $("#jedinicaMereTable");
+    var tbodyJedinicaMere = $("#tbodyJedinicaMere");
+    
+    function prikaziJediniceMere(){
+        $.ajax({
+            type: "GET",
+            contentType : 'application/json; charset=utf-8',
             url : "http://localhost:8080/api/jedinica-mere",
             success : function(result){
             	tabelaJedinicaMere.show();
