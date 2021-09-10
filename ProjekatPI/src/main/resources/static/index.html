@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magacinsko poslovanje</title>
     <!-- Ukljucivanje JQuery biblioteke -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
     <!-- Ukljucivanje Bootstrap-a za izgled aplikacije -->
     <link rel="stylesheet"
@@ -154,10 +154,178 @@
           </nav>
     </header>
 
-    
-    
-    <!-- Prikaz preduzeca -->
-    <table  class="table" id="preduzecaTable" style="display: none;">
+    <div class="container" style="padding-top: 3%;">
+        
+        <!--Prometni dokument-->
+        <div id="prometniDokment" class="main" style="display:none; overflow: visible;">
+            <div id="prijemnica" style="display:none;">
+                <div class="row">
+                    <div class="col-sm">
+                      <div class="card" style="width: 18rem;">
+                          <div class="card-body">Izaberite dobavljača:
+                            <select onchange="postaviInformacijePartnera()" class="form-control" id="inputDobavljac">
+                              <option value="">Dobavljac1</option>
+                              <option value="">Dobavljac2</option>
+                              <option value="">Dobavljac3</option>
+                            </select>
+                            Mesto i adresa:<input class="form-control" id="inputDobavljacMestoIAdresa" readonly type="text",  placeholder="Mesto i adresa">
+                            PIB:<input class="form-control" id="inputDobavljacPIB" readonly type="text", placeholder="PIB dobavljača">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                      <div class="card" style="width: 18rem;">
+                          <div class="card-body">Izaberite kupca:
+                              <select onchange="postaviInformacijePreduzecaPrijemnica()" class="form-control" id="inputKupac">
+                                <option value="">Kupac1</option>
+                                <option value="">Kupac2</option>
+                                <option value="">Kupac3</option>
+                              </select>
+                              Mesto i adresa:<input class="form-control" id="inputKupacMestoIAdresa" readonly type="text", placeholder="Mesto i adresa">
+                              PIB:<input class="form-control" id="inputKupacPIB" readonly type="text", placeholder="PIB kupca">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem; height: 5%;">
+                      <div class="card-body">
+                        <label>Magacin u koji se smešta roba:
+                        <select class="form-control" id="magacinPrijemnica">
+                          <option value="0">Magacin1</option>
+                        </select>
+                      </label>
+                      </div>
+                    </div>
+                  </div>
+                  <p style="padding-top: 3%; text-align: center;">
+                    <b>PRIJEMNICA Br.</b>
+                  <input id="inputPrijemnicaBr" class="form-control col-sm-2" style="display: inline;" type="text" readonly>
+                </p>
+            </div>
+            <div id="otpremnica" style="display:none;">
+                <div class="row">
+                    <div class="col-sm">
+                      <div class="card" style="width: 18rem;">
+                          <div class="card-body">Izaberite prodavca:
+                            <select onchange="postaviInformacijePreduzecaOtpremnica()" class="form-control" id="inputProdavac">
+                              <option value="">Prodavac1</option>
+                              <option value="">Prodavac2</option>
+                              <option value="">Prodavac3</option>
+                            </select>
+                            Mesto i adresa:<input class="form-control" id="inputProdavacMestoIAdresa" readonly type="text", placeholder="Mesto i adresa">
+                            PIB:<input class="form-control" id="inputProdavacPIB" readonly type="text", placeholder="PIB prodavca">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                      <div class="card" style="width: 18rem;">
+                          <div class="card-body">Izaberite kupca:
+                            <select onchange="postaviInformacijePartnera()" class="form-control" id="inputKupacOtpremnica">
+                              <option value="">Kupac1</option>
+                              <option value="">Kupac2</option>
+                              <option value="">Kupac3</option>
+                            </select>
+                            Mesto i adresa:<input class="form-control" id="inputKupacOtpremnicaMestoIAdresa" readonly type="text", placeholder="Mesto i adresa">
+                              PIB:<input class="form-control" id="inputKupacOtpremnicaPIB" readonly type="text", placeholder="PIB kupca">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem; height: 5%;">
+                      <div class="card-body">
+                        <label>Magacin iz kog se roba prodaje:
+                        <select class="form-control" id="magacinOtpremnica" onchange="dajRobuIliUsluge()">
+                          <option value="0">Magacin5</option>
+                        </select>
+                      </label>
+                      </div>
+                    </div>
+                  </div>
+                  <p style="padding-top: 3%; text-align: center;">
+                    <b>OTPREMNICA Br.</b>
+                  <input id="inputOtpremnicaBr" class="form-control col-sm-2" style="display: inline;" type="text" readonly>
+                </p>
+            </div>
+            <div id="medjumagacinskiPromet" style="display:none;">
+              <div style="display: inline-flexbox; text-align: left;">Izaberite preduzeće:
+                <br>
+                <select onchange="promenaPreduzeca()" class="form-control col-sm-2" id="inputMagacinPreduzece" style="display: inline; text-align: left;">
+                  <option value="">Preduzeće1</option>
+                  <option value="">Preduzeće2</option>
+                  <option value="">Preduzeće3</option>
+                </select>
+              </div>
+              <br>
+                <div class="row">
+                    <div class="col-sm">
+                      <div class="card" style="width: 18rem;">
+                          <div class="card-body">
+                            <label>Magacin iz kog se prebacuje roba:
+                            <select onchange="dajRobuIliUsluge()" class="form-control" id="inputMagacin1">
+                              <option value="0">Magacin5</option>
+                            </select>
+                          </label>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                      <div class="card" style="width: 18rem;">
+                          <div class="card-body">
+                            <label>Magacin u koji se prebacuje roba:
+                            <select class="form-control" id="inputMagacin2">
+                            </select>
+                          </label>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                  <p style="padding-top: 3%; text-align: center;">
+                    <b>MEĐUMAGACINSKI PROMET Br.</b>
+                  <input id="inputMedjumagacinskiPrometBr" class="form-control col-sm-2" style="display: inline;" type="text" readonly>
+                </p>
+            </div>
+              
+            <p style="padding-top: 3%;">
+                Datum izdavanja: 
+              <input id="inputDatumIzdavanja" readonly type="date" class="form-control col-sm-2" style="display: inline;">
+              <script>
+                document.getElementById('inputDatumIzdavanja').value = new Date().toISOString().substring(0, 10);
+              </script>
+            </p>
+            <table class="table">
+                <thead >
+                    <tr>
+                        <th style="text-align: center;">Šifra artikla</th> 
+                        <th style="text-align: center;">Naziv</th> 
+                        <th style="text-align: center;">Jed. mere</th> 
+                        <th style="text-align: center;">Količina</th> 
+                        <th style="text-align: center;">Cena</th> 
+                        <th style="text-align: center;">Iznos</th>
+                        <th style="text-align: center;"></th>
+                    </tr>
+                </thead>
+                <tbody id="sadrzajTabele">
+                    
+                </tbody>
+            </table>
+            <div style="float: right;">
+              <button onclick="dodajRed()" class="btn btn-secondary">Dodaj robu ili uslugu</button>
+            </div>
+            <footer style="padding-top: 10%;">
+                <br>
+                <div style="display: inline-flexbox; text-align: center;">
+                  <button onclick="proknjizi()" class="btn btn-secondary" id="btnProknjizi" style="margin-bottom: 10px;">Proknjiži</button>
+                  <button 
+                    onclick="otpremnicaIzvestaj()" 
+                    class="btn btn-secondary" 
+                    id="btnIzvestaj" 
+                    style="display: none; margin-bottom: 10px;"
+                  >
+                          Štampaj izveštaj
+                  </button>
+                </div>
+            </footer>
+        </div>
+        <!-- Prikaz svih preduzeca -->
+        <table  class="table" id="preduzecaTable" style="display: none;">
           <thead>
             <tr>
               <th style="text-align: center;">Naziv</th>
@@ -173,9 +341,8 @@
 
           </tbody>
         </table>
-    
-    <!--Dodavanje preduzeca  -->
-    <div id="dodajPreduzece" style="display: none;">
+        <!-- Forma za dodavanje preduzeca -->
+        <div id="dodajPreduzece" style="display: none;">
           <div class="form-group">
               <label for="naziv">Naziv:</label> <input type="text"
                                                           class="form-control" id="naziv" placeholder="Unesite naziv preduzeća">
@@ -200,7 +367,7 @@
           <button id="btnDodajPreduzece" onclick="submitPreduzece()" type="submit" class="btn btn-secondary">Dodaj</button>
           <button id="updatePreduzece" type="submit" class="btn btn-warning" style="display: none;" onclick="submitUpdatePreduzece()">Izmeni</button>
         </div>
-        
+      
       <!-- Prikaz svih magacina -->
         <table class="table" id="magaciniTable" style="display: none;">
           <thead>
@@ -215,8 +382,53 @@
 
           </tbody>
         </table>
+      <!-- Prikaz svih roba ili usluga -->
+      <table class="table" id="robeUslugeTable" style="display: none;">
+        <thead>
+          <tr>
+            <th style="text-align: center;">Sifra</th>
+            <th style="text-align: center;">Naziv</th>
+            <th style="text-align: center;">Jedinica mere</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tbodyRobaUsluga">
+
+        </tbody>
+      </table>
+      
+        <!-- Prikaz svih jedinica mere -->
+        <table class="table" id="jedinicaMereTable" style="display: none;">
+          <thead>
+            <tr>
+              <th style="text-align: center;">Sifra</th>
+              <th style="text-align: center;">Naziv</th>
+              <th style="text-align: center;">Skreceni Naziv</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tbodyJedinicaMere">
+
+          </tbody>
+        </table>
         
-       <!-- Forma za dodavanje magacina -->
+        <!-- Forma za dodavanje jedinice mere -->
+        <div id="dodajJedinicuMere" style="display: none;">
+          <div class="form-group">
+              <label for="naziv">Naziv:</label> <input type="text"
+                                                          class="form-control" id="nazivJediniceMere" placeholder="Unesite naziv jedinice mere">
+                                                <input type="hidden" id = "idJediniceMereUpdate">
+          </div>
+          <div class="form-group">
+              <label for="adresa">Skraceni naziv:</label> <input type="text"
+                                                              class="form-control" id="skraceniNaziv" placeholder="Unesite skraceni naziv jedinice mere">
+          </div>
+
+          <button id="btnDodajJedinicuMere" onclick="submitJedinicaMere()" type="submit" class="btn btn-secondary">Dodaj</button>
+		      <button id="izmeniJedinicuMere" type="submit" class="btn btn-warning" style="display: none;" onclick="submitUpdateJedinicaMere()">Izmeni</button>
+        </div>
+        
+        <!-- Forma za dodavanje magacina -->
         <div id="dodajMagacin" style="display: none;">
           <div class="form-group">
               <label for="naziv">Naziv:</label> <input type="text"
@@ -234,8 +446,39 @@
           <button id="btnDodajMagacin" onclick="submitMagacin()" type="submit" class="btn btn-secondary">Dodaj</button>
           <button id="izmeniMagacin" type="submit" class="btn btn-warning" style="display: none;" onclick="submitUpdateMagacin()">Izmeni</button>
       </div>
-      
-      
+
+
+      <!-- Forma za dodavanje robe/usluge -->
+      <div id="dodavanjeRobeUsluge" style="display: none;">
+        <div class="form-group">
+            <label for="naziv">Naziv:</label> <input style="width: 40%;" type="text"
+                                                        class="form-control" id="nazivInputRobaUsluga" placeholder="Unesite naziv robe/usluge">
+                                              <input type="hidden" id = "idRobeIliUslugeUpdate">
+        </div>
+        <div id="selectJedinicaMere" class="form-group">
+          
+        </div>
+        <button id="dodajRobuIliUslugu" onclick="submitRobaUsluga()" type="submit" class="btn btn-secondary">Dodaj</button>
+        <button id="izmeniRobuIliUslugu" onclick="submitUpdateRobaIliUsluga()" type="submit" class="btn btn-warning" style="display: none;">Izmeni</button>
+      </div>
+      <!-- Prikaz svih prometa magacinskih kartica -->
+
+      <table class="table" id="prometiMagacinskihKarticaTable" style="display: none;">
+        <thead>
+          <tr>
+            <th style="text-align: center;">Vrsta prometa</th>
+            <th style="text-align: center;">Smer</th>
+            <th style="text-align: center;">Količina</th>
+            <th style="text-align: center;">Cena</th>
+            <th style="text-align: center;">Dokument</th>
+            <th style="text-align: center;">Datum</th>
+          </tr>
+        </thead>
+        <tbody id="tbodyProm">
+
+        </tbody>
+        
+      </table>
       <!-- Sve magacinske kartice -->
 
       <table class="table" id="magacinskeKarticeTable" style="display: none;">
@@ -281,83 +524,11 @@
           </tr>
         </thead>
         <tbody id="tbodyMagacinskeKartice">
-        </tbody>  
-      </table>
-      
-      <!-- Prikaz svih poslovnih godina -->
-      <table class="table" id="poslovneGodineTable" style="display: none;">
-        <thead>
-          <tr>
-            <th style="text-align: center;">Broj godine</th>
-            <th style="text-align: center;">Zaključena</th>
-            <th style="text-align: center;">Naziv preduzeća</th>
-          </tr>
-        </thead>
-        <tbody id="tbodyPoslovneGodine">
-
         </tbody>
-      </table>
-      
-       <!-- Prikaz svih jedinica mere -->
-        <table class="table" id="jedinicaMereTable" style="display: none;">
-          <thead>
-            <tr>
-              <th style="text-align: center;">Sifra</th>
-              <th style="text-align: center;">Naziv</th>
-              <th style="text-align: center;">Skreceni Naziv</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="tbodyJedinicaMere">
-
-          </tbody>
-        </table>
-        <!-- Prikaz svih roba ili usluga -->
-      <table class="table" id="robeUslugeTable" style="display: none;">
-        <thead>
-          <tr>
-            <th style="text-align: center;">Sifra</th>
-            <th style="text-align: center;">Naziv</th>
-            <th style="text-align: center;">Jedinica mere</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="tbodyRobaUsluga">
-
-        </tbody>
-      </table>
-      
-      <!-- Forma za dodavanje robe/usluge -->
-      <div id="dodavanjeRobeUsluge" style="display: none;">
-        <div class="form-group">
-            <label for="naziv">Naziv:</label> <input style="width: 40%;" type="text"
-                                                        class="form-control" id="nazivInputRobaUsluga" placeholder="Unesite naziv robe/usluge">
-                                              <input type="hidden" id = "idRobeIliUslugeUpdate">
-        </div>
-        <div id="selectJedinicaMere" class="form-group">
-          
-        </div>
-        <button id="dodajRobuIliUslugu" onclick="submitRobaUsluga()" type="submit" class="btn btn-secondary">Dodaj</button>
-        <button id="izmeniRobuIliUslugu" onclick="submitUpdateRobaIliUsluga()" type="submit" class="btn btn-warning" style="display: none;">Izmeni</button>
-      </div>
-      
-       <!-- Forma za dodavanje jedinice mere -->
-        <div id="dodajJedinicuMere" style="display: none;">
-          <div class="form-group">
-              <label for="naziv">Naziv:</label> <input type="text"
-                                                          class="form-control" id="nazivJediniceMere" placeholder="Unesite naziv jedinice mere">
-                                                <input type="hidden" id = "idJediniceMereUpdate">
-          </div>
-          <div class="form-group">
-              <label for="adresa">Skraceni naziv:</label> <input type="text"
-                                                              class="form-control" id="skraceniNaziv" placeholder="Unesite skraceni naziv jedinice mere">
-          </div>
-
-          <button id="btnDodajJedinicuMere" onclick="submitJedinicaMere()" type="submit" class="btn btn-secondary">Dodaj</button>
-		      <button id="izmeniJedinicuMere" type="submit" class="btn btn-warning" style="display: none;" onclick="submitUpdateJedinicaMere()">Izmeni</button>
-        </div>
         
-         <!-- Svi partneri -->
+      </table>
+
+      <!-- Svi partneri -->
       <table class="table" id="poslovniPartneri" style="display: none;">
         <thead>
           <tr>
@@ -377,8 +548,23 @@
 
         </tbody>
         
-        
-        <!-- Forma za dodavanje poslovnog partnera -->
+      </table>
+
+      <!-- Prikaz svih poslovnih godina -->
+      <table class="table" id="poslovneGodineTable" style="display: none;">
+        <thead>
+          <tr>
+            <th style="text-align: center;">Broj godine</th>
+            <th style="text-align: center;">Zaključena</th>
+            <th style="text-align: center;">Naziv preduzeća</th>
+          </tr>
+        </thead>
+        <tbody id="tbodyPoslovneGodine">
+
+        </tbody>
+      </table>
+
+      <!-- Forma za dodavanje poslovnog partnera -->
       <div id="dodavanjePoslovnogPartnera" style="display: none;">
         <div class="form-group">
             <label for="naziv">Naziv:</label> <input style="width: 40%;" type="text"
@@ -415,8 +601,195 @@
         <button id="btnDodajPoslovnogPartnera" onclick="submitPoslovnogPartnera()" type="submit" class="btn btn-secondary">Dodaj</button>
         <button id="izmeniPoslovnogPartnera" onclick="submitUpdatePoslPartner()" type="submit" class="btn btn-warning" style="display: none;">Izmeni</button>
       </div>
-        
-        
-        
+
+      <!-- Forma za dodavanje poslovne godine -->
+      <form id="dodajPoslovnuGodinu" style="display: none;">
+        <div class="form-group">
+            <label for="brojGodine">Broj godine:</label> <input type="text"
+                                                        class="form-control" id="brojGodine" placeholder="Unesite broj godine">
+        </div>
+        <div class="form-group" id="nijeCekirana">
+          <label for="zakljucenaGod">Zaključena</label>
+          <input type="checkbox" class="form-control" id="zakljucenaGod"></input>
+        </div>
+        <div class="form-group" id="cekirana" style="display: none;">
+          <label for="zakljucenaGodC">Zaključena</label>
+          <input type="checkbox" class="form-control" id="zakljucenaGodC" checked></input>
+        </div>
+        <div id="selectPreduzecePoslovnaGodina" class="form-group">
+          <label>Izaberite preduzece:
+            <select class="form-control" id="preduzecePoslovnaGodina">
+            </select>
+          </label>
+        </div>
+
+        <button id="btnDodajPoslovnuGodinu" onclick="submitPoslovnaGodina()" type="submit" class="btn btn-secondary">Dodaj</button>
+        <button id="updatePoslovnaGodina" type="submit" class="btn btn-warning" style="display: none;">Izmeni</button>
+      </form>
+
+      <!-- Prikaz magacinske kartice -->
+      <div id="magacinskeKarticeTables" style="display: none; margin: 5%;">
+        <div class="form-group">
+          <label><h1>Magacinske kartice:</h1></label>
+          <div style="float: right;">
+            <button class="btn btn-light" onclick="prethodnaKartica()"><</button>
+            <button class="btn btn-light" onclick="sledecaKartica()">></button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label><b>Magacin:</b></label>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="nazivMagacinaMagKart">Naziv magacina</label>
+            <input type="text" class="form-control" id="nazivMagacinaMagKart" readonly>
+            <input type="hidden" class="form-control" id="idMagacinskeKartice" readonly>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="preduzeceMagKart">Preduzece</label>
+            <input type="text" class="form-control" id="preduzeceMagKart" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label><b>Poslovna godina:</b></label>
+          <input type="text" class="form-control" id="poslovnaGodina" readonly>
+        </div>
+        <div class="form-group">
+          <label><b>Roba ili usluga:</b></label>
+        </div>
+        <div class="form-row">
+          <div class="col-md-4 mb-4">
+            <label for="sifraRobeUsluge">Sifra</label>
+            <input type="text" class="form-control" id="sifraRobeUsluge" readonly>
+          </div>
+          <div class="col-md-4 mb-4">
+            <label for="nazivRobeUsluge">Naziv</label>
+            <input type="text" class="form-control" id="nazivRobeUsluge" readonly>
+          </div>
+          <div class="col-md-4 mb-4">
+            <label for="jedinicaMere">Jedinica mere</label>
+            <input type="text" class="form-control" id="jedinicaMere" readonly>
+          </div>
+          <div class="col-md-4 mb-4">
+            <label for="prosecnaCena">Prosecna cena</label>
+            <input type="text" class="form-control" id="prosecnaCena" readonly>
+          </div>
+        </div>
+        <div class="form-row">
+          
+        </div>
+        <div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="pocetnoStanjeKolicnski">Pocetno stanje kolicinski</label>
+              <input type="text" class="form-control" id="pocetnoStanjeKolicnski" readonly>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="pocetnoStanjeVrednosno">Pocetno stanje vrednosno</label>
+              <input type="text" class="form-control" id="pocetnoStanjeVrednosno" readonly>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="prometUlazaKolicnski">Promet ulaza kolicinski</label>
+              <input type="text" class="form-control" id="prometUlazaKolicnski" readonly>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="prometUlazaVrednosno">Promet ulaza vrednosno</label>
+              <input type="text" class="form-control" id="prometUlazaVrednosno" readonly>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="prometIzlazaKolicnski">Promet izlaza kolicinski</label>
+              <input type="text" class="form-control" id="prometIzlazaKolicnski" readonly>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="prometIzlazaVrednosno">Promet izlaza vrednosno</label>
+              <input type="text" class="form-control" id="prometIzlazaVrednosno" readonly>
+            </div>
+          </div>
+          <!-- <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="ukupnaKorekcijaKolicine">Ukupna korekcija kolicine</label>
+              <input type="text" class="form-control" id="ukupnaKorekcijaKolicine" readonly>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="ukupnaKorekcijaVrednosno">Ukupna korekcija vrednosno</label>
+              <input type="text" class="form-control" id="ukupnaKorekcijaVrednosno" readonly>
+            </div>
+          </div> -->
+        </div>
+        <div class="form-row">
+
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="ukupnaKolicina">Ukupna kolicina</label>
+            <input type="text" class="form-control" id="ukupnaKolicina" readonly>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="ukupnaVrednost">Ukupna vrednost</label>
+            <input type="text" class="form-control" id="ukupnaVrednost" readonly>
+          </div>
+        </div>
+        <button class="btn btn-info" onclick="odrediPrikaz('sviPrometiMagKart')">Detalji</button>
+        <button class="btn btn-info" onclick="nivelacija()">Nivelacija</button>
+      </div>
+
+      <!-- Prometi magacinskih kartica -->
+      <div id="prikazPromMagaKartice" style="display: none; margin: 5%;">
+        <div class="form-group">
+          <label><h1>Prometi magacinske kartice:</h1></label>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="preduzecePromMagKart">Preduzeće</label>
+            <input type="text" class="form-control" id="preduzecePromMagKart" readonly>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="proslovnaGodinaPromMagKart">Poslovna godina</label>
+            <input type="text" class="form-control" id="proslovnaGodinaPromMagKart" readonly>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="sifraRobeIliUslugePromMagKart">Šifra robe ili usluge</label>
+            <input type="text" class="form-control" id="sifraRobeIliUslugePromMagKart" readonly>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="nazivRobeIliUslugePromMagKart">Naziv robe ili usluge</label>
+            <input type="text" class="form-control" id="nazivRobeIliUslugePromMagKart" readonly>
+          </div>
+        </div>
+        <table class="table">
+          <thead >
+            <tr>
+              <th style="text-align: center;">Redni broj</th>
+              <th style="text-align: center;">Vrsta prometa</th>
+              <th style="text-align: center;">Smer</th> 
+              <th style="text-align: center;">Količina</th> 
+              <th style="text-align: center;">Jed. mere</th> 
+              <th style="text-align: center;">Vrednost</th> 
+              <th style="text-align: center;">Cena</th>
+              <th style="text-align: center;">Datum</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tBodyPrometi">
+          </tbody>
+        </table>
+        <div>
+            <button 
+               onclick="prometMagKarticaIzvestaj()" 
+               class="btn btn-secondary" 
+               id="btnIzvestajPrometa" 
+               style="display: none; margin-bottom: 10px;"
+             >
+                     Štampaj izveštaj
+            </button>
+        </div>
+      </div>
+    </div>
 </body>
 </html>
